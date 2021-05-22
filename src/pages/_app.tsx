@@ -3,7 +3,6 @@ import "@fontsource/open-sans/400.css";
 import "@fontsource/open-sans/700.css";
 import Layout from "@src/components/Layout";
 import theme from "@src/utils/theme";
-
 import { NextSeo } from "next-seo";
 import { AppProps } from "next/app";
 import Head from "next/head";
