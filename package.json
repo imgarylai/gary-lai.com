@@ -3,14 +3,16 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "next",
-    "dev:watch": "next-remote-watch ./posts",
+    "dev:watch": "next-remote-watch src/posts",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "@chakra-ui/icons": "1.0.13",
     "@chakra-ui/react": "1.6.2",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@fontsource/open-sans": "4.3.0",
     "framer-motion": "^4",
     "gray-matter": "4.0.3",
     "next": "latest",
@@ -19,7 +21,8 @@
     "next-seo": "4.24.0",
     "nprogress": "0.2.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-icons": "4.2.0"
   },
   "license": "MIT",
   "devDependencies": {
