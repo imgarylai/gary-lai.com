@@ -1,9 +1,10 @@
 import { Spinner } from "@chakra-ui/react";
-import Index from "@src/components/MDXComponents";
-import { H1 } from "@src/components/Typography/Headings";
+import MDXComponents from "@src/components/MDXComponents";
+import { H2, H6 } from "@src/components/Typography/Headings";
 import { getPostBySlug, getPostSlugs } from "@src/lib/posts";
+import dayjs from "dayjs";
 import { MDXRemote } from "next-mdx-remote";
-import { NextSeo } from "next-seo";
+import { ArticleJsonLd, NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 
 const PostPage = ({ source, frontMatter }) => {
@@ -12,12 +13,39 @@ const PostPage = ({ source, frontMatter }) => {
   if (router.isFallback) {
     return <Spinner />;
   }
+
+  const { title, description, date } = frontMatter;
+  const canonical = process.env.host + router.asPath;
   return (
     <>
-      <NextSeo title={frontMatter.title} />
-      <H1>{frontMatter.title}</H1>
-      {frontMatter.date}
-      <MDXRemote {...source} components={Index} />
+      <NextSeo
+        title={title}
+        description={description}
+        canonical={canonical}
+        openGraph={{
+          title: title,
+          description: description,
+          url: canonical,
+          type: "article",
+          article: {
+            publishedTime: dayjs(date).toISOString(),
+          },
+        }}
+      />
+      <ArticleJsonLd
+        url={canonical}
+        title={title}
+        images={[]}
+        datePublished={dayjs(date).format()}
+        dateModified={dayjs(date).format()}
+        authorName={["Gary Lai"]}
+        publisherName="Gary Lai"
+        publisherLogo={process.env.host + "/images/logo.png"}
+        description={description}
+      />
+      <H2 as={"h1"}>{title}</H2>
+      <H6>{dayjs(date).format("YYYY-MM-DD")}</H6>
+      <MDXRemote {...source} components={MDXComponents} />
     </>
   );
 };

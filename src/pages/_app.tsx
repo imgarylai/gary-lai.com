@@ -4,7 +4,7 @@ import "@fontsource/open-sans/700.css";
 import splitbee from "@splitbee/web";
 import Layout from "@src/components/Layout";
 import theme from "@src/lib/theme";
-import { NextSeo } from "next-seo";
+import { BlogJsonLd, DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import Router from "next/router";
@@ -23,7 +23,31 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <ChakraProvider theme={theme}>
       <>
-        <NextSeo titleTemplate="%s | Gary Lai" />
+        <DefaultSeo
+          defaultTitle={`Gary Lai`}
+          titleTemplate="%s | Bubble tea lover🧋"
+          description="Bubble Tea lover🧋"
+          canonical={process.env.host}
+          openGraph={{
+            url: process.env.host,
+            title: "Gary Lai",
+            description: "Bubble Tea lover🧋",
+            images: [
+              {
+                url: process.env.host + `/images/logo.png`,
+                width: 600,
+                height: 600,
+                alt: "Gary Lai",
+              },
+            ],
+            site_name: "Bubble Tea lover🧋",
+          }}
+          twitter={{
+            handle: "@imgarylai",
+            site: "@imgarylai",
+            cardType: "summary_large_image",
+          }}
+        />
         <Head>
           <link rel="shortcut icon" href={"/favicon.ico"} />
           <link
