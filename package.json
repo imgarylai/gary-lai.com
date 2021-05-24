@@ -1,0 +1,41 @@
+{
+  "name": "gary-lai.com",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "dev:watch": "next-remote-watch src/posts",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "1.0.13",
+    "@chakra-ui/react": "1.6.2",
+    "@emotion/react": "11.4.0",
+    "@emotion/styled": "11.3.0",
+    "@fontsource/open-sans": "4.3.0",
+    "@splitbee/web": "0.2.4",
+    "dayjs": "1.10.4",
+    "formik": "2.2.8",
+    "framer-motion": "4.1.17",
+    "gray-matter": "4.0.3",
+    "next": "latest",
+    "next-mdx-remote": "3.0.2",
+    "next-remote-watch": "1.0.0",
+    "next-seo": "4.24.0",
+    "nprogress": "0.2.0",
+    "prism-react-renderer": "1.2.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "4.2.0",
+    "react-live": "2.2.3",
+    "react-lorem-component": "0.13.0",
+    "react-spinners": "0.11.0",
+    "react-table": "7.7.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/react": "17.0.6",
+    "prettier": "2.3.0",
+    "typescript": "4.2.4"
+  }
+}
