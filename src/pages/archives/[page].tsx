@@ -12,7 +12,7 @@ export const getStaticPaths = async () => {
   const slugs = await getPostSlugs();
   const pages = Math.ceil(slugs.length / POSTS_PER_PAGE);
   const paths = Array.from(Array(pages).keys()).map((page) => ({
-    params: { page: String(page) },
+    params: { page: String(page + 1) },
   }));
 
   return {
