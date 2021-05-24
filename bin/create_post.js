@@ -13,7 +13,7 @@ const getFilePath = (filename) => {
     strict: true,
     lower: true,
   });
-  return join(POSTS_PATH, `${slug}.mdx`);
+  return join(POSTS_PATH, `${dayjs().format("YYYY-MM-DD")}-${slug}.mdx`);
 };
 
 prompt([
