@@ -1,0 +1,49 @@
+---
+title: How to get coinbase's bitcoin historical rate
+description: ''
+date: '2021-05-24T19:28:02+08:00'
+---
+
+```python
+import csv
+import logging
+import time
+from datetime import datetime, timezone, timedelta
+from os import path
+import pandas as pd
+import cbpro
+
+public_client = cbpro.PublicClient()
+
+
+def cb_historical_rates(symbol, start_time=datetime(2017, 1, 1, 0, 0, 0, 0, tzinfo=timezone.utc), granularity=3600):
+    accepted_grans = [60, 300, 900, 3600, 21600, 86400]
+    if granularity not in accepted_grans:
+        raise ValueError('Specified granularity is {}, must be in approved values: {}'.format(
+            granularity, accepted_grans))
+    csv_file = "{}-{}.csv".format(symbol, granularity)
+    result = []
+
+    if path.exists(csv_file):
+        with open(csv_file, 'r') as fin:
+            reader = csv.reader(fin)
+            for row in reader:
+                result.append(row)
+        start_time = datetime.fromtimestamp(int(result[-1][0]) + 3600, tz=timezone.utc)
+    while start_time < datetime.now(tz=timezone.utc):
+        end_time = start_time + timedelta(seconds=3600 * 300)
+        logging.info("fetching from {} - {}".format(start_time.isoformat(), end_time.isoformat()))
+        rates = public_client.get_product_historic_rates(symbol,
+                                                         start=start_time.isoformat(),
+                                                         end=(end_time - timedelta(seconds=1)).isoformat(),
+                                                         granularity=3600)
+        with open(csv_file, 'a') as fout:
+            writer = csv.writer(fout)
+            for rate in rates[::-1]:
+                writer.writerow(rate)
+        result.extend(rates[::-1])
+        start_time = end_time
+        time.sleep(0.5)
+
+    return pd.DataFrame(result, columns=['time', 'low', 'high', 'open', 'close', 'volume'])
+```
