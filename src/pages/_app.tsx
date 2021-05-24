@@ -1,17 +1,16 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import "@fontsource/open-sans/400.css";
 import "@fontsource/open-sans/700.css";
-import splitbee from "@splitbee/web";
 import Layout from "@src/components/Layout";
+import * as gtag from "@src/lib/gtag";
 import theme from "@src/lib/theme";
-import { BlogJsonLd, DefaultSeo } from "next-seo";
+import { DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import Head from "next/head";
 import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { useEffect } from "react";
-import * as gtag from "@src/lib/gtag";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -20,7 +19,6 @@ Router.events.on("routeChangeError", () => NProgress.done());
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter();
   useEffect(() => {
-    // splitbee.init();
     const handleRouteChange = (url) => {
       gtag.pageview(url);
     };
