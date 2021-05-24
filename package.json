@@ -6,7 +6,8 @@
     "dev:watch": "next-remote-watch src/posts",
     "build": "next build",
     "postbuild": "next-sitemap",
-    "start": "next start"
+    "start": "next start",
+    "analyze": "ANALYZE=true yarn build"
   },
   "bin": {
     "create-post": "bin/create_post.js"
@@ -38,6 +39,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@next/bundle-analyzer": "10.2.2",
     "@types/react": "17.0.6",
     "enquirer": "2.3.6",
     "next-sitemap": "1.6.57",
