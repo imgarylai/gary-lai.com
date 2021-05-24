@@ -7,19 +7,28 @@ import theme from "@src/lib/theme";
 import { BlogJsonLd, DefaultSeo } from "next-seo";
 import { AppProps } from "next/app";
 import Head from "next/head";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 import { useEffect } from "react";
+import * as gtag from "@src/lib/gtag";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 const App = ({ Component, pageProps }: AppProps) => {
+  const router = useRouter();
   useEffect(() => {
-    splitbee.init();
-  }, []);
+    // splitbee.init();
+    const handleRouteChange = (url) => {
+      gtag.pageview(url);
+    };
+    router.events.on("routeChangeComplete", handleRouteChange);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
   return (
     <ChakraProvider theme={theme}>
       <>
