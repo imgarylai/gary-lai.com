@@ -1,5 +1,3 @@
-import { GITHUB } from "@src/lib/constants";
-
 export interface NavItem {
   label: string;
   subLabel?: string;

@@ -1,4 +1,3 @@
-import { Heading } from "@chakra-ui/react";
 import { H1 } from "@src/components/Typography/Headings";
 import { NextSeo } from "next-seo";
 

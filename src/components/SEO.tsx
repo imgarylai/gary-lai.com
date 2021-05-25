@@ -2,27 +2,27 @@ import { DefaultSeo } from "next-seo";
 
 const SEO = () => (
   <DefaultSeo
-    defaultTitle={`Gary Lai`}
-    titleTemplate="%s | Bubble tea lover🧋"
-    description="Bubble Tea lover🧋"
+    defaultTitle={process.env.title}
+    titleTemplate={process.env.title_template}
+    description={process.env.description}
     canonical={process.env.host}
     openGraph={{
       url: process.env.host,
-      title: "Gary Lai",
-      description: "Bubble Tea lover🧋",
+      title: process.env.title,
+      description: process.env.description,
       images: [
         {
           url: process.env.host + `/images/logo.png`,
           width: 600,
           height: 600,
-          alt: "Gary Lai",
+          alt: process.env.title,
         },
       ],
-      site_name: "Bubble Tea lover🧋",
+      site_name: process.env.title,
     }}
     twitter={{
-      handle: "@imgarylai",
-      site: "@imgarylai",
+      handle: process.env.handle,
+      site: process.env.site,
       cardType: "summary_large_image",
     }}
     additionalLinkTags={[

@@ -1,11 +1,10 @@
-import { POSTS_PER_PAGE } from "@src/lib/constants";
 import fs from "fs";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 import { join } from "path";
 
 export const POSTS_PATH = join(process.cwd(), "src/posts");
-
+export const POSTS_PER_PAGE = 10;
 export const postFilePaths = fs
   .readdirSync(POSTS_PATH)
   .filter((path) => /\.mdx?$/.test(path));
