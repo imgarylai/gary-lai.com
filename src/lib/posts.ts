@@ -1,4 +1,5 @@
 import { POSTS_PER_PAGE } from "@src/lib/consts";
+import dayjs from "dayjs";
 import fs from "fs";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
@@ -10,32 +11,23 @@ export const postFilePaths = fs
   .readdirSync(POSTS_PATH)
   .filter((path) => /\.mdx?$/.test(path));
 
-export const getPosts = (pageNumber = 1, perPage = POSTS_PER_PAGE) => {
-  const allPosts = postFilePaths.map((filePath) => {
-    const source = fs.readFileSync(join(POSTS_PATH, filePath));
-    const { content, data } = matter(source);
-    return {
-      content,
-      data,
-      filePath,
-    };
-  });
-  const posts = allPosts.slice(
-    (pageNumber - 1) * perPage,
-    pageNumber * perPage
+const getSlugFromFileName = (filePath) => {
+  return filePath.replace(/\.mdx?$/, "");
+};
+
+export const getPostSlugs = fs.readdirSync(POSTS_PATH).map(getSlugFromFileName);
+export const getAllPosts = async (pageNumber = 1, perPage = POSTS_PER_PAGE) => {
+  const allPosts = await Promise.all(
+    getPostSlugs.map(async (slug) => await getPostBySlug(slug))
   );
+  const posts = allPosts
+    .sort((a, b) => (dayjs(b.data.date).isAfter(a.data.date) ? 1 : -1))
+    .slice((pageNumber - 1) * perPage, pageNumber * perPage);
   const total = allPosts.length;
   return {
     posts,
     total,
   };
-};
-
-export const getPostSlugs = () => {
-  const slugs = postFilePaths
-    .map((path) => path.replace(/\.mdx?$/, ""))
-    .map((slug) => ({ params: { slug } }));
-  return slugs;
 };
 
 export const getPostBySlug = async (slug) => {
@@ -46,6 +38,7 @@ export const getPostBySlug = async (slug) => {
 
   const mdxSource = await serialize(content);
   return {
+    slug,
     mdxSource,
     data,
   };

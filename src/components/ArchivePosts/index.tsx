@@ -32,7 +32,7 @@ const ArchivePosts = ({ posts, total, page = 1 }) => {
           posts.map((post) => (
             <Box key={post.filePath}>
               <NextLink
-                as={`/posts/${post.filePath.replace(/\.mdx?$/, "")}`}
+                as={`/posts/${post.slug}`}
                 href={`/posts/[slug]`}
                 passHref
               >

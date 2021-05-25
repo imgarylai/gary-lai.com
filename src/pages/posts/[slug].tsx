@@ -7,7 +7,7 @@ import { MDXRemote } from "next-mdx-remote";
 import { ArticleJsonLd, NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 
-const PostPage = ({ source, frontMatter }) => {
+const PostPage = ({ source, frontMatter, slug }) => {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -63,11 +63,13 @@ export const getStaticProps = async ({ params }) => {
   };
 };
 
-export const getStaticPaths = async () => {
-  const paths = await getPostSlugs();
-
+export const getStaticPaths = () => {
   return {
-    paths,
+    paths: getPostSlugs.map((slug) => ({
+      params: {
+        slug: slug,
+      },
+    })),
     fallback: true,
   };
 };

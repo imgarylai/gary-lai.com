@@ -1,6 +1,6 @@
 import ArchivePosts from "@src/components/ArchivePosts";
 import { POSTS_PER_PAGE } from "@src/lib/consts";
-import { getPosts, getPostSlugs } from "@src/lib/posts";
+import { getAllPosts, getPostSlugs } from "@src/lib/posts";
 
 const ArchivePage = ({ posts, page, total }) => (
   <ArchivePosts posts={posts} page={page} total={total} />
@@ -9,8 +9,7 @@ const ArchivePage = ({ posts, page, total }) => (
 export default ArchivePage;
 
 export const getStaticPaths = async () => {
-  const slugs = await getPostSlugs();
-  const pages = Math.ceil(slugs.length / POSTS_PER_PAGE);
+  const pages = Math.ceil(getPostSlugs.length / POSTS_PER_PAGE);
   const paths = Array.from(Array(pages).keys()).map((page) => ({
     params: { page: String(page + 1) },
   }));
@@ -23,6 +22,6 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }) => {
   const { page } = params;
-  const { posts, total } = await getPosts(Number(page));
+  const { posts, total } = await getAllPosts(Number(page), POSTS_PER_PAGE);
   return { props: { posts, page: Number(page), total } };
 };
