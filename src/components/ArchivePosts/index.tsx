@@ -9,7 +9,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { H1, H2 } from "@src/components/Typography/Headings";
-import { POSTS_PER_PAGE } from "@src/lib/posts";
+import { POSTS_PER_PAGE } from "@src/lib/consts";
 import dayjs from "dayjs";
 import { NextSeo } from "next-seo";
 import NextLink from "next/link";

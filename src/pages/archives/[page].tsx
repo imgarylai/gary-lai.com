@@ -1,5 +1,6 @@
 import ArchivePosts from "@src/components/ArchivePosts";
-import { getPosts, getPostSlugs, POSTS_PER_PAGE } from "@src/lib/posts";
+import { POSTS_PER_PAGE } from "@src/lib/consts";
+import { getPosts, getPostSlugs } from "@src/lib/posts";
 
 const ArchivePage = ({ posts, page, total }) => (
   <ArchivePosts posts={posts} page={page} total={total} />
