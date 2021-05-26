@@ -7,10 +7,6 @@ import { join } from "path";
 
 export const POSTS_PATH = join(process.cwd(), "src/posts");
 
-export const postFilePaths = fs
-  .readdirSync(POSTS_PATH)
-  .filter((path) => /\.mdx?$/.test(path));
-
 const getSlugFromFileName = (filePath) => {
   return filePath.replace(/\.mdx?$/, "");
 };
