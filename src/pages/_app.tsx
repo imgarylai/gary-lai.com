@@ -1,6 +1,5 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import "@fontsource/open-sans/400.css";
-import "@fontsource/open-sans/700.css";
+import "@fontsource/lato";
 import Layout from "@src/components/Layout";
 import SEO from "@src/components/SEO";
 import * as gtag from "@src/lib/gtag";
