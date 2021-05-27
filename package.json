@@ -20,7 +20,7 @@
     "@fontsource/lato": "4.3.0",
     "@fontsource/open-sans": "4.3.0",
     "@types/node": "15.6.1",
-    "dayjs": "1.10.4",
+    "dayjs": "1.10.5",
     "formik": "2.2.8",
     "framer-motion": "4.1.17",
     "gray-matter": "4.0.3",
