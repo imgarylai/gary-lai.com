@@ -9,7 +9,7 @@ import {
   useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
-import { H1, H2, H3 } from "@src/components/Typography/Headings";
+import { H2, H3 } from "@src/components/Typography/Headings";
 import { POSTS_PER_PAGE } from "@src/lib/consts";
 import dayjs from "dayjs";
 import { NextSeo } from "next-seo";
@@ -50,7 +50,7 @@ const PostList = ({ posts, page, total, title, urlPrefix }) => {
             {hasPreviousPage && (
               <NextLink href={urlPrefix + `/${page - 1}`} passHref>
                 <Link>
-                  <ChevronLeftIcon /> Previous
+                  <ChevronLeftIcon /> Previous {page - 1}/{total}
                 </Link>
               </NextLink>
             )}
@@ -60,7 +60,7 @@ const PostList = ({ posts, page, total, title, urlPrefix }) => {
             {hasNextPage && (
               <NextLink href={urlPrefix + `/${page + 1}`} passHref>
                 <Link>
-                  Next <ChevronRightIcon />
+                  Next {page + 1}/{total} <ChevronRightIcon />
                 </Link>
               </NextLink>
             )}
