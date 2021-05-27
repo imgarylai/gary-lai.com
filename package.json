@@ -18,7 +18,7 @@
     "@emotion/react": "11.4.0",
     "@emotion/styled": "11.3.0",
     "@fontsource/lato": "4.4.0",
-    "@fontsource/open-sans": "4.3.0",
+    "@fontsource/open-sans": "4.4.0",
     "@types/node": "15.6.1",
     "dayjs": "1.10.5",
     "formik": "2.2.8",
