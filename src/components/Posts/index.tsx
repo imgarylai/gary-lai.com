@@ -14,10 +14,10 @@ import dayjs from "dayjs";
 import { NextSeo } from "next-seo";
 import NextLink from "next/link";
 
-const ArchivePosts = ({ posts, total, page = 1 }) => {
+const PostList = ({ posts, page, total, title, urlPrefix }) => {
   const hasNextPage = Math.ceil(total / POSTS_PER_PAGE) > page;
   const hasPreviousPage = page > 1;
-  const pageTitle = `Archives ${hasPreviousPage ? ` - Page ${page}` : ""}`;
+  const pageTitle = `${title} ${hasPreviousPage ? ` - Page ${page}` : ""}`;
 
   return (
     <>
@@ -30,7 +30,7 @@ const ArchivePosts = ({ posts, total, page = 1 }) => {
       >
         {posts &&
           posts.map((post) => (
-            <Box key={post.filePath}>
+            <Box key={post.slug}>
               <NextLink
                 as={`/posts/${post.slug}`}
                 href={`/posts/[slug]`}
@@ -52,11 +52,7 @@ const ArchivePosts = ({ posts, total, page = 1 }) => {
         <Flex my={4}>
           <Box>
             {hasPreviousPage && (
-              <NextLink
-                href="/archives/[page]"
-                as={`/archives/${page - 1}`}
-                passHref
-              >
+              <NextLink href={urlPrefix + `/${page - 1}`} passHref>
                 <Link>
                   <ChevronLeftIcon /> Previous
                 </Link>
@@ -66,11 +62,7 @@ const ArchivePosts = ({ posts, total, page = 1 }) => {
           <Spacer />
           <Box>
             {hasNextPage && (
-              <NextLink
-                href="/archives/[page]"
-                as={`/archives/${page + 1}`}
-                passHref
-              >
+              <NextLink href={urlPrefix + `/${page + 1}`} passHref>
                 <Link>
                   Next <ChevronRightIcon />
                 </Link>
@@ -82,4 +74,4 @@ const ArchivePosts = ({ posts, total, page = 1 }) => {
     </>
   );
 };
-export default ArchivePosts;
+export default PostList;

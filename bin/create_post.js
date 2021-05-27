@@ -47,6 +47,7 @@ prompt([
       title: title,
       description: description,
       date: `${dayjs().format()}`,
+      tags: [],
     });
 
     fs.writeFileSync(filePath, data);

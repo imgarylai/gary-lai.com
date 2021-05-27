@@ -1,14 +1,26 @@
-import ArchivePosts from "@src/components/ArchivePosts";
+import PostList from "@src/components/Posts";
 import { POSTS_PER_PAGE } from "@src/lib/consts";
-import { getAllPosts } from "@src/lib/posts";
+import { getPosts } from "@src/lib/posts";
 
-const Archives = ({ posts, total }) => {
-  return <ArchivePosts posts={posts} total={total} />;
-};
+const Archives = ({ posts, total }) => (
+  <PostList
+    posts={posts}
+    page={1}
+    total={total}
+    title={`Archives`}
+    urlPrefix={`/archives`}
+  />
+);
 
 export default Archives;
 
-export const getStaticProps = async ({ params }) => {
-  const { posts, total } = await getAllPosts(1, POSTS_PER_PAGE);
-  return { props: { posts, total } };
+export const getStaticProps = async () => {
+  const { posts, total } = await getPosts();
+
+  return {
+    props: {
+      posts: posts.slice(0, POSTS_PER_PAGE),
+      total,
+    },
+  };
 };
