@@ -6,9 +6,10 @@ import {
   Spacer,
   StackDivider,
   Text,
+  useColorModeValue,
   VStack,
 } from "@chakra-ui/react";
-import { H1, H2 } from "@src/components/Typography/Headings";
+import { H1, H2, H3 } from "@src/components/Typography/Headings";
 import { POSTS_PER_PAGE } from "@src/lib/consts";
 import dayjs from "dayjs";
 import { NextSeo } from "next-seo";
@@ -22,7 +23,7 @@ const PostList = ({ posts, page, total, title, urlPrefix }) => {
   return (
     <>
       <NextSeo title={pageTitle} />
-      <H1>{pageTitle}</H1>
+      <H2 as={`h1`}>{pageTitle}</H2>
       <VStack
         divider={<StackDivider borderColor="gray.200" />}
         spacing={4}
@@ -30,22 +31,17 @@ const PostList = ({ posts, page, total, title, urlPrefix }) => {
       >
         {posts &&
           posts.map((post) => (
-            <Box key={post.slug}>
-              <NextLink
-                as={`/posts/${post.slug}`}
-                href={`/posts/[slug]`}
-                passHref
+            <NextLink key={post.slug} href={`/posts/${post.slug}`} passHref>
+              <Link
+                _hover={{
+                  textDecoration: "none",
+                  color: useColorModeValue("blackAlpha.600", "whiteAlpha.600"),
+                }}
               >
-                <Link
-                  _hover={{
-                    textDecoration: "none",
-                  }}
-                >
-                  <H2>{post.data.title}</H2>
-                  <Text>{dayjs(post.data.date).format("MMM D, YYYY")}</Text>
-                </Link>
-              </NextLink>
-            </Box>
+                <H3 as={`h2`}>{post.data.title}</H3>
+                <Text>{dayjs(post.data.date).format("MMM D, YYYY")}</Text>
+              </Link>
+            </NextLink>
           ))}
       </VStack>
       {posts && (

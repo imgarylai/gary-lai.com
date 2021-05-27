@@ -1,5 +1,6 @@
-import { Spinner } from "@chakra-ui/react";
+import { HStack, Spinner } from "@chakra-ui/react";
 import MDXComponents from "@src/components/MDXComponents";
+import TagLink from "@src/components/TagLink";
 import { H2, H6 } from "@src/components/Typography/Headings";
 import { getPostBySlug, getPostSlugs } from "@src/lib/posts";
 import dayjs from "dayjs";
@@ -14,7 +15,7 @@ const PostPage = ({ source, frontMatter, slug }) => {
     return <Spinner />;
   }
 
-  const { title, description, date } = frontMatter;
+  const { title, description, date, tags } = frontMatter;
   const canonical = process.env.host + router.asPath;
   return (
     <>
@@ -45,6 +46,11 @@ const PostPage = ({ source, frontMatter, slug }) => {
       />
       <H2 as={"h1"}>{title}</H2>
       <H6>{dayjs(date).format("YYYY-MM-DD")}</H6>
+      <HStack spacing={2} py={4}>
+        {tags.map((tag) => (
+          <TagLink key={tag} tag={tag} />
+        ))}
+      </HStack>
       <MDXRemote {...source} components={MDXComponents} />
     </>
   );

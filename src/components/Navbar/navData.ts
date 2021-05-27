@@ -7,6 +7,10 @@ export interface NavItem {
 
 export const NAV_ITEMS: Array<NavItem> = [
   {
+    label: "Tags",
+    href: "/tags",
+  },
+  {
     label: "Archives",
     href: "/archives",
   },
