@@ -1,15 +1,19 @@
 import PostList from "@src/components/Posts";
+import { H2 } from "@src/components/Typography/Headings";
 import { POSTS_PER_PAGE } from "@src/lib/consts";
 import { getPosts } from "@src/lib/posts";
 
 const Archives = ({ posts, total }) => (
-  <PostList
-    posts={posts}
-    page={1}
-    total={total}
-    title={`Archives`}
-    urlPrefix={`/archives`}
-  />
+  <>
+    <H2>Archives</H2>
+    <PostList
+      posts={posts}
+      page={1}
+      total={total}
+      title={`Archives`}
+      urlPrefix={`/archives`}
+    />
+  </>
 );
 
 export default Archives;
