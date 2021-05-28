@@ -4,7 +4,6 @@ import {
   Container,
   Flex,
   IconButton,
-  ScaleFade,
   Stack,
   useColorMode,
   useColorModeValue,

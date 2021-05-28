@@ -1,4 +1,5 @@
 import { HStack, Spinner } from "@chakra-ui/react";
+import Comments from "@src/components/Comments";
 import MDXComponents from "@src/components/MDXComponents";
 import TagLink from "@src/components/TagLink";
 import { H2, H6 } from "@src/components/Typography/Headings";
@@ -52,6 +53,14 @@ const PostPage = ({ source, frontMatter, slug }) => {
           <TagLink key={tag} tag={tag} />
         ))}
       </HStack>
+      <Comments
+        shortname="gary-lai"
+        config={{
+          url: canonical,
+          identifier: slug,
+          title: title,
+        }}
+      />
     </>
   );
 };
