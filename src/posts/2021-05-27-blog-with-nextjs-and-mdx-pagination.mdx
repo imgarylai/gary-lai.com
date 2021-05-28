@@ -1,0 +1,152 @@
+---
+title: Blog with Next.js & MDX - Pagination
+description: ""
+date: "2021-05-27T20:19:15+08:00"
+tags: ["nextjs"]
+---
+
+
+[Next.js](https://nextjs.org)  is my favorite static site solution. It is also used for many of my works in production. I, therefore, decide to migrate my personal blog from ghost to Next.js. Despite there are many good CMS providers, I want my posts less dependent on these platforms. I decide to save my markdown posts in a GitHub repo, like [Jekyll](https://jekyllrb.com/). I would like to add the MDX support because I'm using React.js for the website. This is a plus for my blog if I want to put some interactive component in my post. I thus start using the [with-mdx-remote](https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote) example from the official Next.js repo for blogging.
+
+The example is configured quite well to be deployed without any problem. However, because dynamic contents are generated from the file system, the pagination information, such as the current page and the total number of posts, is missing. Usually, the pagination information is sent from the API server together with the post data. This post is my experience to get this information back and make your blog paginated!
+
+> Assumption: You have equipped the knowledge of [dynamic-routes](https://nextjs.org/docs/routing/dynamic-routes) in Next.js.
+
+My ideal pagination function should cover following items.
+
+- When the user navigate pages, the current page should show on url, e.g, `/archives/1`.
+- User should be able to tell themselves it has reached the start or end of the page, e.g, hide previous page button on first page.
+- Give user total pages number.
+
+## Get started.
+
+First, create two files, `pages/archives/[page].jsx` and `lib/post.js`.
+
+- `pages/archives/[page].jsx` fetch posts for each page.
+- `lib/post.js` contains the API implementation. The `post.js` can be anywhere you like. `lib` directory is just my configuration.
+
+### lib/post.js
+
+```js
+import dayjs from "dayjs";
+import fs from "fs";
+import matter from "gray-matter";
+import { serialize } from "next-mdx-remote/serialize";
+import { join } from "path";
+
+// Locate posts directory
+export const POSTS_PATH = join(process.cwd(), "src/posts");
+
+// Use the filename for the url slug
+const getSlugFromFileName = (filePath) => {
+  return filePath.replace(/\.mdx?$/, "");
+};
+
+// Get all the slugs
+export const getPostSlugs = fs.readdirSync(POSTS_PATH).map(getSlugFromFileName);
+
+// Get post by slug
+export const getPostBySlug = async (slug: string) => {
+
+  // Read markdown content
+  const postFilePath = join(POSTS_PATH, `${slug}.mdx`);
+  const source = fs.readFileSync(postFilePath, "utf8");
+
+  // markdown front matter
+  const { content, data } = matter(source);
+  // MDX component
+  const mdxSource = await serialize(content);
+
+  return {
+    slug,
+    mdxSource,
+    data
+  };
+};
+
+// Get all posts
+export const getPosts = async () => {
+  const allPosts = await Promise.all(
+    getPostSlugs.map(async (slug) => await getPostBySlug(slug))
+  );
+  return {
+    // Sort posts by date descending order
+    posts: allPosts.sort((a, b) =>
+      dayjs(b.data.date).isAfter(a.data.date) ? 1 : -1
+    ),
+    // Total posts number
+    total: allPosts.length,
+  };
+};
+```
+
+### pages/archives/[page].jsx
+
+```jsx
+import { getPosts, getPostSlugs } from "./posts";
+import Link from "next/link";
+
+const POSTS_PER_PAGE = 10;
+
+const ArchivesPerPage = ({ posts, page, total }) => {
+  const hasNextPage = Math.ceil(total / POSTS_PER_PAGE) > page;
+  const hasPreviousPage = page > 1;
+
+  return (
+    <>
+      {/* List posts*/}
+      {posts && (<ul>posts.map((post) => <li key={post.slug}>{post.data.title}</li>)</ul>)}
+
+      {/* Pagination */}
+      {posts && (
+        <>
+          {hasPreviousPage && (
+            <Link href={`/archives/${page - 1}`}>
+              Previous {page - 1}/{total}
+            </Link>
+          )}
+          {hasNextPage && (
+            <Link href={`/archives/${page + 1}`}>
+                Next {page + 1}/{total}
+            </Link>
+          )}
+        </>
+      )}
+    </>
+  );
+};
+
+export default ArchivesPerPage;
+
+export const getStaticPaths = async () => {
+  // Get total pages
+  const pages = Math.ceil(getPostSlugs.length / POSTS_PER_PAGE);
+  // Generate paths for Next.js. It is like: [{ params: { page: 1 } }, { params: { page: 2 }},...]
+  const paths = Array.from(Array(pages).keys()).map((page) => ({
+    params: { page: String(page + 1) },
+  }));
+
+  return {
+    paths,
+    fallback: true,
+  };
+};
+
+export const getStaticProps = async ({ params }) => {
+  const { page } = params;
+  const { posts, total } = await getPosts();
+
+  return {
+    props: {
+      // Get posts on page `page`
+      posts: posts.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE),
+      page: Number(page),
+      total,
+    },
+  };
+};
+```
+
+I remove all the styling from the code example. However, you should be able to easily apply the style the way you want, tailwind, bootstrap, or Chakra UI for example.
+
+You can check the [source code](https://github.com/imgarylai/gary-lai.com) of this blog. It is more complex, but there are more details there. If it happens you come here and want to implement this function as well, don't hesitate to leave your comments or questions below. I will try my best to help you. Hope you like my post!
