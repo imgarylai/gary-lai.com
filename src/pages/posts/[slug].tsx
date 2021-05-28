@@ -33,6 +33,12 @@ const PostPage = ({ source, frontMatter, slug }) => {
             publishedTime: dayjs(date).toISOString(),
           },
         }}
+        additionalMetaTags={[
+          {
+            name: "keywords",
+            content: tags,
+          },
+        ]}
       />
       <ArticleJsonLd
         url={canonical}
