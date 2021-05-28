@@ -46,12 +46,12 @@ const PostPage = ({ source, frontMatter, slug }) => {
       />
       <H2 as={"h1"}>{title}</H2>
       <H6>{dayjs(date).format("YYYY-MM-DD")}</H6>
+      <MDXRemote {...source} components={MDXComponents} />
       <HStack spacing={2} py={4}>
         {tags.map((tag) => (
           <TagLink key={tag} tag={tag} />
         ))}
       </HStack>
-      <MDXRemote {...source} components={MDXComponents} />
     </>
   );
 };

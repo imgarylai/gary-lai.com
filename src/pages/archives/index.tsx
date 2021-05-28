@@ -5,7 +5,6 @@ import { getPosts } from "@src/lib/posts";
 
 const Archives = ({ posts, total }) => (
   <>
-    <H2>Archives</H2>
     <PostList
       posts={posts}
       page={1}

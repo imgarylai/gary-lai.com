@@ -1,4 +1,5 @@
 import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from "@chakra-ui/react";
+import A from "@src/components/Typography/A";
 import Blockquote from "@src/components/Typography/Blockquote";
 import Br from "@src/components/Typography/Br";
 import Code from "@src/components/Typography/Code";
@@ -33,5 +34,6 @@ const MDXComponents = {
   tr: Tr,
   th: Th,
   td: Td,
+  a: A,
 };
 export default MDXComponents;

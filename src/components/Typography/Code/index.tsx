@@ -77,7 +77,7 @@ const EditableNotice = (props: BoxProps) => {
 };
 
 const CodeContainer = (props: BoxProps) => (
-  <Box p={"5"} rounded="8px" my="8" bg="#011627" {...props} />
+  <Box p={"5"} rounded={"8px"} my={"2"} bg={"#011627"} {...props} />
 );
 
 const Code = (props) => {

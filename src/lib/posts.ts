@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
 import fs from "fs";
 import matter from "gray-matter";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { join } from "path";
 
@@ -13,13 +12,7 @@ const getSlugFromFileName = (filePath) => {
 
 export const getPostSlugs = fs.readdirSync(POSTS_PATH).map(getSlugFromFileName);
 
-export const getPostBySlug = async (
-  slug
-): Promise<{
-  data: { [p: string]: any };
-  mdxSource: MDXRemoteSerializeResult<Record<string, unknown>>;
-  slug: string;
-}> => {
+export const getPostBySlug = async (slug: string) => {
   const postFilePath = join(POSTS_PATH, `${slug}.mdx`);
   const source = fs.readFileSync(postFilePath, "utf8");
 
