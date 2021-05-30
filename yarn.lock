@@ -904,10 +904,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@fontsource/lato@4.4.0":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-4.4.0.tgz#8a3789d73c507acd9ca5b300f0bf02d2a6aa23b4"
-  integrity sha512-aOcow9KmAt1zauS+E5DmcKddfMYRnJtd5gIf/XcklZD+1iNwLfbv5nLfZNndDLSC0Z3/03JvzbMWA4b9MO2Jog==
+"@fontsource/lato@4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-4.4.2.tgz#c61e42ff61389e90c32668503cafb0b1c611a91a"
+  integrity sha512-2IIu7XUOtec0yTVdutfLuKcDfAliv4hk4wwCd53rkmNKGbSXgcBB0NwWiLHHHYRYrte36kygFjSwSdoixrdZcA==
 
 "@fontsource/open-sans@4.4.0":
   version "4.4.0"
