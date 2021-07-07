@@ -904,15 +904,15 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@fontsource/lato@4.4.5":
-  version "4.4.5"
-  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-4.4.5.tgz#82c16ef01ab1a1039f74d774e89ef1f76111def6"
-  integrity sha512-pm9am2tdLnK+21PKCK060oY8R8OKFVzTVvM6pPS+mS7JOZKe3mmDgfB2DGzzyHG/Azj3Pn6onU72BrQsh3XjNw==
+"@fontsource/lato@4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-4.5.0.tgz#c248b083be330daafade76995fed9088d5b76c04"
+  integrity sha512-Y1qluoF+5b2U6MWcEz70+euZwl4TEV+9v7nZCmuRgNHb5McYc3VmbNmYNEiLsnb1HHwlAHA70P/LktP9EJ61ag==
 
-"@fontsource/open-sans@4.4.5":
-  version "4.4.5"
-  resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-4.4.5.tgz#07b31617e62ed753c94cabcf552ebaed4de497ce"
-  integrity sha512-PDWEvO1/p8OAHHiielvEmwGXHNbZhrZn96ojV7+/mKgFu+cCUcGVJl9sFs97rCWLe3hKQsYLEsJs4EiLjwa+UQ==
+"@fontsource/open-sans@4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-4.5.0.tgz#e6d05dfdfe74580001010302f9c418067b45a6a9"
+  integrity sha512-49+A0IkTTv3cpS1YecrZNCqvlVTThUt/qioiAIZsXfgC3TqavgRqwXXvroXmhVeP/f0sqZw5CRDMS1Hj4aSTbQ==
 
 "@hapi/accept@5.0.2":
   version "5.0.2"
