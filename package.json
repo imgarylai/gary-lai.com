@@ -21,7 +21,7 @@
     "@fontsource/open-sans": "4.5.0",
     "@types/node": "15.6.1",
     "dayjs": "1.10.6",
-    "disqus-react": "1.1.1",
+    "disqus-react": "1.1.2",
     "formik": "2.2.9",
     "framer-motion": "4.1.17",
     "gray-matter": "4.0.3",
