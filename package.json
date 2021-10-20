@@ -45,7 +45,7 @@
     "@next/bundle-analyzer": "11.1.2",
     "@types/react": "17.0.33",
     "enquirer": "2.3.6",
-    "next-sitemap": "1.6.179",
+    "next-sitemap": "1.6.192",
     "prettier": "2.4.1",
     "ts-node": "10.4.0",
     "typescript": "4.4.3"
