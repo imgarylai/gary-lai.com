@@ -23,7 +23,7 @@
     "dayjs": "1.10.7",
     "disqus-react": "1.1.2",
     "formik": "2.2.9",
-    "framer-motion": "4.1.17",
+    "framer-motion": "5.0.0",
     "gray-matter": "4.0.3",
     "next": "latest",
     "next-mdx-remote": "3.0.6",
