@@ -18,6 +18,7 @@ import { H2 } from "@src/components/Typography/Headings";
 import { getPosts } from "@src/lib/posts";
 import { NextSeo } from "next-seo";
 import NextLink from "next/link";
+
 const Home = ({ posts }) => (
   <>
     <NextSeo title={"Gary Lai"} />

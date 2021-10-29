@@ -4,7 +4,7 @@ import Layout from "@src/components/Layout";
 import SEO from "@src/components/SEO";
 import * as gtag from "@src/lib/gtag";
 import theme from "@src/lib/theme";
-import { AppProps } from "next/app";
+import type { AppProps } from "next/app";
 import Router, { useRouter } from "next/router";
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
@@ -14,11 +14,11 @@ Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
-const App = ({ Component, pageProps }: AppProps) => {
+function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   useEffect(() => {
-    const handleRouteChange = (url) => {
-      gtag.pageview(url);
+    const handleRouteChange = (url: string) => {
+      gtag.pageView(url);
     };
     router.events.on("routeChangeComplete", handleRouteChange);
     return () => {
@@ -33,6 +33,6 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Layout>
     </ChakraProvider>
   );
-};
+}
 
-export default App;
+export default MyApp;

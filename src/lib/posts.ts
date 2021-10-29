@@ -6,7 +6,7 @@ import { join } from "path";
 
 export const POSTS_PATH = join(process.cwd(), "src/posts");
 
-const getSlugFromFileName = (filePath) => {
+const getSlugFromFileName = (filePath: string) => {
   return filePath.replace(/\.mdx?$/, "");
 };
 
@@ -51,7 +51,7 @@ export const getTagsWithOccurrences = async () => {
   }, {});
 };
 
-export const getPostsByTag = async (tag) => {
+export const getPostsByTag = async (tag: string) => {
   const { posts } = await getPosts();
   const filteredPosts = posts.filter((post) => post.data.tags.includes(tag));
   return {

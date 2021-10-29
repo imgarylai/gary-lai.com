@@ -1,5 +1,5 @@
 import { useDisclosure } from "@chakra-ui/react";
-import { createContext, useContext } from "react";
+import React, { createContext, useContext } from "react";
 
 interface NavbarContextProps {
   isNavbarOpen: boolean;
@@ -8,7 +8,7 @@ interface NavbarContextProps {
 
 const NavbarContext = createContext<NavbarContextProps>(undefined);
 
-export const NavbarProvider = ({ children }) => {
+export const NavbarProvider: React.FC = ({ children }) => {
   const { isOpen: isNavbarOpen, onToggle: onNavbarToggle } = useDisclosure();
 
   return (

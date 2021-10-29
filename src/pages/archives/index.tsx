@@ -1,9 +1,9 @@
 import PostList from "@src/components/Posts";
-import { H2 } from "@src/components/Typography/Headings";
 import { POSTS_PER_PAGE } from "@src/lib/consts";
 import { getPosts } from "@src/lib/posts";
+import { NextPage } from "next";
 
-const Archives = ({ posts, total }) => (
+const Archives: NextPage = ({ posts, total }) => (
   <>
     <PostList
       posts={posts}
