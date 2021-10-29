@@ -42,7 +42,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@next/bundle-analyzer": "11.1.2",
+    "@next/bundle-analyzer": "12.0.1",
     "@types/react": "17.0.33",
     "enquirer": "2.3.6",
     "next-sitemap": "1.6.192",
