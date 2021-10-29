@@ -14,7 +14,5 @@ module.exports = withBundleAnalyzer({
     description: "Bubble Tea Lover🧋",
     measurement_id: "G-C5CDL8Q12D",
   },
-  future: {
-    webpack5: true,
-  },
+  swcMinify: true,
 });
