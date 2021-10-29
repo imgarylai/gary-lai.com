@@ -1,6 +1,6 @@
 import { DefaultSeo } from "next-seo";
 
-const SEO = () => (
+const SEO: () => JSX.Element = () => (
   <DefaultSeo
     defaultTitle={process.env.title}
     titleTemplate={process.env.title_template}

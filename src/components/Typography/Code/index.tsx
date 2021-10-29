@@ -9,7 +9,7 @@ import {
 import Highlight from "@src/components/Typography/Code/highlight";
 import scope from "@src/components/Typography/Code/react-live-scope";
 import theme from "prism-react-renderer/themes/nightOwl";
-import React, { CSSProperties, useState } from "react";
+import React, { CSSProperties, FC, useState } from "react";
 import { LiveEditor, LiveError, LivePreview, LiveProvider } from "react-live";
 
 export const liveEditorStyle: CSSProperties = {
@@ -107,7 +107,7 @@ const Code = (props) => {
 
   const onChange = (newCode) => setEditorCode(newCode.trim());
 
-  if (language === "jsx" && live === true) {
+  if (language === "jsx" && live) {
     return (
       <LiveProvider {...liveProviderProps}>
         <LiveCodePreview zIndex="1" />

@@ -1,6 +1,7 @@
 import { Alert, useColorMode } from "@chakra-ui/react";
+import { FC } from "react";
 
-const Blockquote = (props) => {
+const Blockquote: FC = (props) => {
   const { colorMode } = useColorMode();
   const bgColor = {
     light: "gray.200",
