@@ -9,7 +9,7 @@ const Tags = ({ tagsWithOccurrences }: TagsProps) => {
   return (
     <>
       <NextSeo title={`Tags`} />
-      <H2 as={`h1`}>Tags</H2>
+      <H2>Tags</H2>
       <HStack spacing={2} my={4}>
         {Object.keys(tagsWithOccurrences).map((key: string) => (
           <TagLink key={key} tagName={key} count={tagsWithOccurrences[key]} />

@@ -2,12 +2,12 @@ import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from "@chakra-ui/react";
 import A from "@src/components/Typography/A";
 import Blockquote from "@src/components/Typography/Blockquote";
 import Br from "@src/components/Typography/Br";
-import Code from "@src/components/Typography/Code";
 import { H1, H2, H3, H4, H5, H6 } from "@src/components/Typography/Headings";
 import Hr from "@src/components/Typography/Hr";
 import InlineCode from "@src/components/Typography/InlineCode";
 import { Li, Ol, Ul } from "@src/components/Typography/List";
 import P from "@src/components/Typography/P";
+import Code from "@src/components/Typography/Code";
 import Pre from "@src/components/Typography/Pre";
 
 const MDXComponents = {

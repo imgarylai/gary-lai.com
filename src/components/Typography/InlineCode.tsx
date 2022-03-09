@@ -1,7 +1,6 @@
 import { Code, useColorModeValue } from "@chakra-ui/react";
-import { FC } from "react";
 
-const InlineCode: FC = (props) => (
+const InlineCode = (props: any) => (
   <Code
     apply="mdx.code"
     color={useColorModeValue("gray.800", "gray.200")}

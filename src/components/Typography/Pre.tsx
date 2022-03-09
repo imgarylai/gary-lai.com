@@ -1,6 +1,5 @@
 import { Box } from "@chakra-ui/react";
-import { FC } from "react";
 
-const Pre: FC = (props) => <Box borderRadius="sm" {...props} />;
+const Pre = (props: any) => <Box borderRadius="sm" {...props} />;
 
 export default Pre;

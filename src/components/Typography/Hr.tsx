@@ -1,7 +1,7 @@
 import { Divider, useColorMode } from "@chakra-ui/react";
 import { FC } from "react";
 
-const Hr: FC = () => {
+const Hr = () => {
   const { colorMode } = useColorMode();
   const borderColor = {
     light: "gray.200",

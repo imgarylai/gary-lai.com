@@ -47,7 +47,7 @@ const Home = ({ posts }: HomeProps) => (
             <Avatar
               size={"2xl"}
               src={"/images/gary.png"}
-              alt={"Gary Lai"}
+              name={"Gary Lai"}
               mb={4}
               pos={"relative"}
             />
