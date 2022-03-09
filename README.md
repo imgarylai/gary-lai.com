@@ -4,20 +4,21 @@ This is my [personal blog](https://gary-lai.com) built with [Next.js](https://ne
 
 ## Features
 
-- Write posts in `.mdx`.  
+- Write posts in `.mdx`.
 - Create a post through command `creat-post`.
 - Generate archive pages with pagination.
-- Generate tag pages with pagination.  
+- Generate tag pages with pagination.
 - Use [Chakra UI](https://chakra-ui.com/) for the style.
 
 ## How to use
 
 ### Create a post
+
 ```shell
 $ create-post
 ✔ What is the file name? Example
 ✔ What is the post title? Example Post
-✔ What is the post description? 
+✔ What is the post description?
 Post Example Post was created at /path/to/project/src/posts/example.mdx
 ---
 title: Example Post

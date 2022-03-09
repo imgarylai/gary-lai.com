@@ -1,7 +1,13 @@
 import { StackDivider, VStack } from "@chakra-ui/react";
 import PostItem from "@src/components/Posts/PostItem";
 
-const PostList = ({ posts }) => {
+import PostProps from "@src/types/postProps";
+
+export interface PostListProps {
+  posts: PostProps[];
+}
+
+const PostList = ({ posts }: PostListProps) => {
   return (
     <VStack
       divider={<StackDivider borderColor="gray.200" />}

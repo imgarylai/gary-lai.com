@@ -1,18 +1,36 @@
-import PostList from "@src/components/Posts";
 import { POSTS_PER_PAGE } from "@src/lib/consts";
 import { getPostsByTag, getTagsWithOccurrences } from "@src/lib/posts";
+import PostList from "@src/components/Posts/PostList";
+import PostProps from "@src/types/postProps";
+import ParamsProps from "@src/types/paramsProps";
+import { GetStaticProps } from "next";
+import { NextSeo } from "next-seo";
+import { H2 } from "@src/components/Typography/Headings";
+import Pagination from "@src/components/Posts/Pagination";
 
-const PostsByTagPerPage = ({ posts, page, total, slug }) => (
-  <PostList
-    posts={posts}
-    page={page}
-    total={total}
-    title={"Tags"}
-    urlPrefix={`/tags/${slug}`}
-  />
-);
+export interface TagPageProps {
+  slug: string;
+  posts: PostProps[];
+  page: number;
+  total: number;
+}
 
-export default PostsByTagPerPage;
+const TagPage = ({ posts, page, total, slug }: TagPageProps) => {
+  const hasPreviousPage = page > 1;
+  const pageTitle = `Tags ${hasPreviousPage ? ` - Page ${page}` : ""}`;
+  return (
+    <>
+      <NextSeo title={pageTitle} />
+      <H2>{pageTitle}</H2>
+      <PostList posts={posts} />
+      {posts && (
+        <Pagination page={page} total={total} urlPrefix={`/tags/${slug}`} />
+      )}
+    </>
+  );
+};
+
+export default TagPage;
 
 export const getStaticPaths = async () => {
   const tags = await getTagsWithOccurrences();
@@ -30,14 +48,17 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ params }) => {
-  const { slug, page } = params;
-  const { posts, total } = await getPostsByTag(slug);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const { slug, page } = params as ParamsProps;
+  const { posts, total } = await getPostsByTag(slug!);
 
   return {
     props: {
       slug,
-      posts: posts.slice((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE),
+      posts: posts.slice(
+        (Number(page) - 1) * POSTS_PER_PAGE,
+        Number(page) * POSTS_PER_PAGE
+      ),
       page: Number(page),
       total,
     },

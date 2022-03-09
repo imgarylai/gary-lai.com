@@ -10,14 +10,14 @@ import {
 } from "@chakra-ui/react";
 import { DesktopNav } from "@src/components/Navbar/DesktopNav";
 import { MobileNav } from "@src/components/Navbar/MobileNav";
-import { useNavbarContext } from "@src/context/useNavbarContext";
+import { useNavbar } from "@src/context/useNavbar";
 import Image from "next/image";
 import NextLink from "next/link";
 import { IoMoon, IoSunny } from "react-icons/io5";
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const { isNavbarOpen, onNavbarToggle } = useNavbarContext();
+  const { isNavbarOpen, onNavbarToggle } = useNavbar();
 
   return (
     <Box>

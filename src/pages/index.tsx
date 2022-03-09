@@ -18,8 +18,13 @@ import { H2 } from "@src/components/Typography/Headings";
 import { getPosts } from "@src/lib/posts";
 import { NextSeo } from "next-seo";
 import NextLink from "next/link";
+import PostProps from "@src/types/postProps";
 
-const Home = ({ posts }) => (
+interface HomeProps {
+  posts?: PostProps[];
+}
+
+const Home = ({ posts }: HomeProps) => (
   <>
     <NextSeo title={"Gary Lai"} />
     <Grid
@@ -57,9 +62,9 @@ const Home = ({ posts }) => (
               color={useColorModeValue("gray.700", "gray.400")}
               px={3}
             >
-              I'm a software engineer and a 🧋 lover. My past experience was
+              {`I'm a software engineer and a 🧋 lover. My past experience was
               mostly in the E-Commerce fields. I like to turn jobs into
-              automation and make my colleagues work less.
+              automation and make my colleagues work less.`}
             </Text>
 
             <Stack align={"center"} justify={"center"} direction={"row"} mt={6}>

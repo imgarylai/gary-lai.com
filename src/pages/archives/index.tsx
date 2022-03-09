@@ -1,18 +1,9 @@
-import PostList from "@src/components/Posts";
 import { POSTS_PER_PAGE } from "@src/lib/consts";
 import { getPosts } from "@src/lib/posts";
-import { NextPage } from "next";
+import ArchivePage, { ArchivePageProps } from "@src/pages/archives/[page]";
 
-const Archives: NextPage = ({ posts, total }) => (
-  <>
-    <PostList
-      posts={posts}
-      page={1}
-      total={total}
-      title={`Archives`}
-      urlPrefix={`/archives`}
-    />
-  </>
+const Archives = ({ posts, page, total }: ArchivePageProps) => (
+  <ArchivePage posts={posts} page={page} total={total} />
 );
 
 export default Archives;
@@ -23,6 +14,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       posts: posts.slice(0, POSTS_PER_PAGE),
+      page: 1,
       total,
     },
   };

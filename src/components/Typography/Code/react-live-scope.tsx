@@ -1,25 +1,25 @@
+import * as Icons from "@chakra-ui/icons";
 import { Icon } from "@chakra-ui/icons";
 import React, { FC } from "react";
 import * as Chakra from "@chakra-ui/react";
 import { chakra } from "@chakra-ui/react";
-import * as Icons from "@chakra-ui/icons";
 import * as Formik from "formik";
 import * as ReactTable from "react-table";
 import FocusLock from "react-focus-lock";
 import {
-  MdSettings,
-  MdReceipt,
-  MdGroupWork,
-  MdCheckCircle,
-  MdGraphicEq,
+  MdArrowDropDown,
   MdBuild,
   MdCall,
+  MdCheckCircle,
+  MdGraphicEq,
+  MdGroupWork,
   MdPhone,
-  MdArrowDropDown,
+  MdReceipt,
+  MdSettings,
 } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import { FaFacebook, FaTwitter } from "react-icons/fa";
-import Lorem from "react-lorem-component";
+import { LoremIpsum } from "react-lorem-ipsum";
 import * as Loaders from "react-spinners";
 
 const CircleIcon: FC = (props) => (
@@ -63,7 +63,7 @@ const ReactLiveScope = {
   ...reactIcons,
   StarIcon,
   FocusLock,
-  Lorem,
+  LoremIpsum,
   CircleIcon,
 };
 

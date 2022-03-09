@@ -7,7 +7,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { NAV_ITEMS, NavItem } from "@src/components/Navbar/navData";
-import { useNavbarContext } from "@src/context/useNavbarContext";
+import { useNavbar } from "@src/context/useNavbar";
 import NextLink from "next/link";
 
 interface MobileNavProps {
@@ -43,7 +43,7 @@ export const MobileNav = ({ isNavbarOpen }: MobileNavProps) => {
 };
 
 const MobileNavItem = ({ href, label }: NavItem) => {
-  const { onNavbarToggle } = useNavbarContext();
+  const { onNavbarToggle } = useNavbar();
   return (
     <Stack spacing={4}>
       <NextLink href={href ?? "#"} passHref>

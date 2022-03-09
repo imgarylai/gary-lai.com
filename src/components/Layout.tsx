@@ -1,7 +1,7 @@
 import { Container, Stack, useColorModeValue } from "@chakra-ui/react";
 import Footer from "@src/components/Footer";
 import Navbar from "@src/components/Navbar";
-import { NavbarProvider } from "@src/context/useNavbarContext";
+import { NavbarProvider } from "@src/context/useNavbar";
 import React from "react";
 
 const Layout: React.FC = ({ children }) => (

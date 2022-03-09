@@ -9,6 +9,8 @@ import { NAV_ITEMS } from "@src/components/Navbar/navData";
 import NextLink from "next/link";
 
 export const DesktopNav = (props: BoxProps) => {
+  const textColorValue = useColorModeValue("gray.600", "gray.200");
+  const hoverTextColorValue = useColorModeValue("gray.800", "white");
   return (
     <Stack direction={"row"} spacing={4} {...props}>
       {NAV_ITEMS.map((navItem) => (
@@ -18,10 +20,10 @@ export const DesktopNav = (props: BoxProps) => {
               p={2}
               fontSize={"sm"}
               fontWeight={500}
-              color={useColorModeValue("gray.600", "gray.200")}
+              color={textColorValue}
               _hover={{
                 textDecoration: "none",
-                color: useColorModeValue("gray.800", "white"),
+                color: hoverTextColorValue,
               }}
             >
               {navItem.label}

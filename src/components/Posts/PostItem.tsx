@@ -2,8 +2,13 @@ import { Grid, GridItem, Link, useColorModeValue } from "@chakra-ui/react";
 import { H5 } from "@src/components/Typography/Headings";
 import dayjs from "dayjs";
 import NextLink from "next/link";
+import PostProps from "@src/types/postProps";
 
-const PostItem = ({ post }) => (
+interface PostItemProps {
+  post: PostProps;
+}
+
+const PostItem = ({ post }: PostItemProps) => (
   <NextLink href={`/posts/${post.slug}`} passHref>
     <Link
       _hover={{
@@ -23,16 +28,16 @@ const PostItem = ({ post }) => (
         }}
       >
         <GridItem colSpan={{ base: 1, md: 2 }}>
-          <H5>{dayjs(post.data.date).format("YYYY MMM D")} </H5>
+          <H5>{dayjs(post.frontMatter.date).format("YYYY MMM D")} </H5>
         </GridItem>
-        <GridItem colSpan={{ base: 1, md: 10 }} order={{ base: -1, md: 0 }}>
-          <H5
-            _hover={{
-              textDecoration: "none",
-            }}
-          >
-            {post.data.title}
-          </H5>
+        <GridItem
+          colSpan={{ base: 1, md: 10 }}
+          order={{ base: -1, md: 0 }}
+          _hover={{
+            textDecoration: "none",
+          }}
+        >
+          <H5>{post.frontMatter.title}</H5>
         </GridItem>
       </Grid>
     </Link>

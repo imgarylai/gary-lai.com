@@ -10,7 +10,7 @@ const calculateLinesToHighlight = (meta: string) => {
   if (!RE.test(meta)) {
     return () => false;
   }
-  const lineNumbers = RE.exec(meta)[1]
+  const lineNumbers = RE.exec(meta)![1]
     .split(`,`)
     .map((v) => v.split(`-`).map((x) => parseInt(x, 10)));
 
@@ -37,7 +37,7 @@ function Highlight({
   showLines,
   ...props
 }: HighlightProps) {
-  const shouldHighlightLine = calculateLinesToHighlight(metastring);
+  const shouldHighlightLine = calculateLinesToHighlight(metastring!);
 
   return (
     <BaseHighlight
@@ -54,6 +54,7 @@ function Highlight({
               const lineProps = getLineProps({ line, key: i });
               return (
                 <chakra.div
+                  key={i}
                   px="5"
                   bg={shouldHighlightLine(i) ? "whiteAlpha.200" : undefined}
                   {...lineProps}
@@ -64,7 +65,7 @@ function Highlight({
                     </chakra.span>
                   )}
                   {line.map((token, key) => (
-                    <span {...getTokenProps({ token, key })} />
+                    <span key={key} {...getTokenProps({ token, key })} />
                   ))}
                 </chakra.div>
               );

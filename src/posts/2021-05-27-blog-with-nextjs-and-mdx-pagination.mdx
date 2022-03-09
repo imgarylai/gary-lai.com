@@ -2,11 +2,10 @@
 title: Blog with Next.js & MDX - Pagination
 description: ""
 date: "2021-05-27T20:19:15+08:00"
-tags: ['nextjs']
+tags: ["nextjs"]
 ---
 
-
-[Next.js](https://nextjs.org)  is my favorite static site solution. It is also used for many of my works in production. I, therefore, decide to migrate my personal blog from ghost to Next.js. Despite there are many good CMS providers, I want my posts less dependent on these platforms. I decide to save my markdown posts in a GitHub repo, like [Jekyll](https://jekyllrb.com/). I would like to add the MDX support because I'm using React.js for the website. This is a plus for my blog if I want to put some interactive component in my post. I thus start using the [with-mdx-remote](https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote) example from the official Next.js repo for blogging.
+[Next.js](https://nextjs.org) is my favorite static site solution. It is also used for many of my works in production. I, therefore, decide to migrate my personal blog from ghost to Next.js. Despite there are many good CMS providers, I want my posts less dependent on these platforms. I decide to save my markdown posts in a GitHub repo, like [Jekyll](https://jekyllrb.com/). I would like to add the MDX support because I'm using React.js for the website. This is a plus for my blog if I want to put some interactive component in my post. I thus start using the [with-mdx-remote](https://github.com/vercel/next.js/tree/canary/examples/with-mdx-remote) example from the official Next.js repo for blogging.
 
 The example is configured quite well to be deployed without any problem. However, because dynamic contents are generated from the file system, the pagination information, such as the current page and the total number of posts, is missing. Usually, the pagination information is sent from the API server together with the post data. This post is my experience to get this information back and make your blog paginated!
 
@@ -47,7 +46,6 @@ export const getPostSlugs = fs.readdirSync(POSTS_PATH).map(getSlugFromFileName);
 
 // Get post by slug
 export const getPostBySlug = async (slug: string) => {
-
   // Read markdown content
   const postFilePath = join(POSTS_PATH, `${slug}.mdx`);
   const source = fs.readFileSync(postFilePath, "utf8");
@@ -60,7 +58,7 @@ export const getPostBySlug = async (slug: string) => {
   return {
     slug,
     mdxSource,
-    data
+    data,
   };
 };
 
@@ -95,7 +93,11 @@ const ArchivesPerPage = ({ posts, page, total }) => {
   return (
     <>
       {/* List posts*/}
-      {posts && (<ul>posts.map((post) => <li key={post.slug}>{post.data.title}</li>)</ul>)}
+      {posts && (
+        <ul>
+          posts.map((post) => <li key={post.slug}>{post.data.title}</li>)
+        </ul>
+      )}
 
       {/* Pagination */}
       {posts && (
@@ -107,7 +109,7 @@ const ArchivesPerPage = ({ posts, page, total }) => {
           )}
           {hasNextPage && (
             <Link href={`/archives/${page + 1}`}>
-                Next {page + 1}/{total}
+              Next {page + 1}/{total}
             </Link>
           )}
         </>

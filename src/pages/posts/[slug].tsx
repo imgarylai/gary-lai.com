@@ -1,5 +1,4 @@
 import { HStack, Spinner } from "@chakra-ui/react";
-import Comments from "@src/components/Comments";
 import MDXComponents from "@src/components/MDXComponents";
 import TagLink from "@src/components/TagLink";
 import { H2, H6 } from "@src/components/Typography/Headings";
@@ -8,8 +7,12 @@ import dayjs from "dayjs";
 import { MDXRemote } from "next-mdx-remote";
 import { ArticleJsonLd, NextSeo } from "next-seo";
 import { useRouter } from "next/router";
+import { DiscussionEmbed } from "disqus-react";
+import { GetStaticProps } from "next";
+import { ParsedUrlQuery } from "querystring";
+import PostProps from "@src/types/postProps";
 
-const PostPage = ({ source, frontMatter, slug }) => {
+const PostPage = ({ source, frontMatter, slug }: PostProps) => {
   const router = useRouter();
 
   if (router.isFallback) {
@@ -36,30 +39,28 @@ const PostPage = ({ source, frontMatter, slug }) => {
         additionalMetaTags={[
           {
             name: "keywords",
-            content: tags,
+            content: tags!.join(" "),
           },
         ]}
       />
       <ArticleJsonLd
         url={canonical}
-        title={title}
+        title={title!}
         images={[]}
         datePublished={dayjs(date).format()}
         dateModified={dayjs(date).format()}
         authorName={["Gary Lai"]}
         publisherName="Gary Lai"
         publisherLogo={process.env.host + "/images/logo.png"}
-        description={description}
+        description={description!}
       />
-      <H2 as={"h1"}>{title}</H2>
+      <H2>{title}</H2>
       <H6>{dayjs(date).format("YYYY-MM-DD")}</H6>
       <MDXRemote {...source} components={MDXComponents} />
       <HStack spacing={2} py={4}>
-        {tags.map((tag) => (
-          <TagLink key={tag} tag={tag} />
-        ))}
+        {tags && tags.map((tag: string) => <TagLink key={tag} tagName={tag} />)}
       </HStack>
-      <Comments
+      <DiscussionEmbed
         shortname="gary-lai"
         config={{
           url: canonical,
@@ -72,14 +73,19 @@ const PostPage = ({ source, frontMatter, slug }) => {
 };
 export default PostPage;
 
-export const getStaticProps = async ({ params }) => {
-  const { slug } = params;
-  const { mdxSource, data } = await getPostBySlug(slug);
+interface Params extends ParsedUrlQuery {
+  slug: string;
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const { slug } = context.params as Params;
+  const { source, frontMatter } = await getPostBySlug(slug);
 
   return {
     props: {
-      source: mdxSource,
-      frontMatter: data,
+      slug: slug,
+      source: source,
+      frontMatter: frontMatter,
     },
   };
 };

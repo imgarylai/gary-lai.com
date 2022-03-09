@@ -80,7 +80,16 @@ const CodeContainer = (props: BoxProps) => (
   <Box p={"5"} rounded={"8px"} my={"2"} bg={"#011627"} {...props} />
 );
 
-const Code = (props) => {
+const Code = (props: {
+  [x: string]: any;
+  className: any;
+  live?: false | undefined;
+  manual: any;
+  render: any;
+  children: any;
+  viewlines: any;
+  ln: any;
+}) => {
   const {
     className,
     live = false,
@@ -105,7 +114,7 @@ const Code = (props) => {
     ...rest,
   };
 
-  const onChange = (newCode) => setEditorCode(newCode.trim());
+  const onChange = (newCode: string) => setEditorCode(newCode.trim());
 
   if (language === "jsx" && live) {
     return (
