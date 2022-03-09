@@ -2,16 +2,21 @@
   "name": "gary-lai.com",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "dev:watch": "next-remote-watch src/posts",
-    "build": "next build",
-    "postbuild": "next-sitemap",
-    "start": "next start",
-    "lint": "next lint"
-  },
   "bin": {
     "create-post": "bin/create_post.js"
+  },
+  "scripts": {
+    "build": "next build",
+    "postbuild": "next-sitemap",
+    "dev": "next dev",
+    "dev:watch": "next-remote-watch src/posts",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "@chakra-ui/icons": "1.0.16",
@@ -32,7 +37,7 @@
     "react-dom": "17.0.2",
     "react-icons": "4.3.1",
     "react-live": "2.3.0",
-    "react-lorem-component": "0.13.0",
+    "react-lorem-ipsum": "1.4.10",
     "react-spinners": "0.11.0",
     "react-table": "7.7.0"
   },
@@ -49,12 +54,6 @@
     "next-seo": "4.28.1",
     "next-sitemap": "1.6.192",
     "prettier": "2.4.1",
-    "react-lorem-ipsum": "1.4.10",
     "typescript": "4.4.4"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
