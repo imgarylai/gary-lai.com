@@ -999,15 +999,15 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/lato@4.5.2":
-  version "4.5.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-4.5.2.tgz#88b63c8643d91bf96b82050cb0321ea9de406ae3"
-  integrity sha512-4HvkoFOXI31LyZHZWCl84ESQQ0XIcQWqdfBVQEUAYarQsFSqCEby255o3n/sWPJZjWHJf6eJqhvFl5WgGYj1bA==
+"@fontsource/lato@4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@fontsource/lato/-/lato-4.5.3.tgz#55b2eb1123ddb2475680dabbe64fc4c7988db276"
+  integrity sha512-EnzxRcmBVxTPSF2cAbp/2J23J+N9BbxwKLEP2ZgGAAE9Mw+Sjzjsh2SK1gtRzaWbAn+Uj62OjIzx4ShfL69sIg==
 
-"@fontsource/open-sans@4.5.5":
-  version "4.5.5"
-  resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-4.5.5.tgz#f42ede921cc807cf7b96896691348d75dafbf70c"
-  integrity sha512-h1oUPSQpoMnDrnzIZTVS9PPBFhWXS87v6/cd9FY2Xc+GKbOVcjPZxcvUDU1TnCie2QSoYY9aifERRV/d8JHtWQ==
+"@fontsource/open-sans@4.5.6":
+  version "4.5.6"
+  resolved "https://registry.yarnpkg.com/@fontsource/open-sans/-/open-sans-4.5.6.tgz#20438c6b0b7772c371f784b4ede5c23a7605f1f3"
+  integrity sha512-bQuNS0H1VL1VLC6FwmReHlpJaICVe/seODU3Q9cpTQbJ5OtRD4TwWMrAjfTxqcFNollA6O0AlE4BnRSWMQLfvw==
 
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
