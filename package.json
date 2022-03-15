@@ -52,7 +52,7 @@
     "eslint-config-next": "12.1.0",
     "formik": "2.2.9",
     "next-seo": "5.1.0",
-    "next-sitemap": "2.5.7",
+    "next-sitemap": "2.5.10",
     "prettier": "2.5.1",
     "typescript": "4.6.2"
   }
