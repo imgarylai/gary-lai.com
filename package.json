@@ -44,7 +44,7 @@
   "devDependencies": {
     "@types/node": "17.0.21",
     "@types/nprogress": "0.2.0",
-    "@types/react": "17.0.41",
+    "@types/react": "17.0.43",
     "@types/react-table": "7.7.10",
     "commitizen": "4.2.4",
     "cz-conventional-changelog": "3.3.0",
