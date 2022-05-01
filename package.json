@@ -23,7 +23,7 @@
     "@chakra-ui/react": "1.8.8",
     "@emotion/react": "11.9.0",
     "@emotion/styled": "11.8.1",
-    "@fontsource/lato": "4.5.5",
+    "@fontsource/lato": "4.5.8",
     "@fontsource/open-sans": "4.5.8",
     "dayjs": "1.11.1",
     "disqus-react": "1.1.2",
