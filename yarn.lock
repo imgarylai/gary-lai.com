@@ -3637,10 +3637,10 @@ react-simple-code-editor@^0.11.0:
   resolved "https://registry.yarnpkg.com/react-simple-code-editor/-/react-simple-code-editor-0.11.0.tgz#bb57c7c29b570f2ab229872599eac184f5bc673c"
   integrity sha512-xGfX7wAzspl113ocfKQAR8lWPhavGWHL3xSzNLeseDRHysT+jzRBi/ExdUqevSMos+7ZtdfeuBOXtgk9HTwsrw==
 
-react-spinners@0.13.1:
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.13.1.tgz#c485ff9020d6840c0d6d3639d74e4fb4348bbc1e"
-  integrity sha512-iWeSx0kwJoHu5bgEdGcG5q8NYklX2jraJ+WacoidH9GUx5XeFqBXCbG6W37ciy0VahioDS9N6KK9DUoZ6m6Zlg==
+react-spinners@0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/react-spinners/-/react-spinners-0.13.2.tgz#a333cb345cbe0846084789a291e545eb80d472b1"
+  integrity sha512-GrtgDlHHMl9DbPgO9NByRyMDCHbrUoW37xwo+bdac9lPFnwlp7DW5uTykSayf/j47YiBAvrQybS9AuM9T+WLeA==
 
 react-style-singleton@^2.2.1:
   version "2.2.1"
