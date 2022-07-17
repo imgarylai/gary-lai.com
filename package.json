@@ -46,7 +46,7 @@
     "@types/nprogress": "0.2.0",
     "@types/react": "17.0.47",
     "@types/react-table": "7.7.12",
-    "commitizen": "4.2.4",
+    "commitizen": "4.2.5",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.2",
