@@ -24,7 +24,7 @@
     "@emotion/react": "11.10.4",
     "@emotion/styled": "11.10.4",
     "@fontsource/lato": "4.5.10",
-    "@fontsource/open-sans": "4.5.12",
+    "@fontsource/open-sans": "4.5.13",
     "dayjs": "1.11.5",
     "disqus-react": "1.1.5",
     "framer-motion": "7.5.3",
