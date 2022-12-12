@@ -27,7 +27,7 @@
     "@fontsource/open-sans": "4.5.13",
     "dayjs": "1.11.7",
     "disqus-react": "1.1.5",
-    "framer-motion": "7.6.19",
+    "framer-motion": "7.7.2",
     "gray-matter": "4.0.3",
     "next": "13.0.6",
     "next-mdx-remote": "3.0.8",
